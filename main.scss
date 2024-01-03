@@ -1,0 +1,62 @@
+@use 'variables';
+@use 'templates';
+@use 'media-queries';
+
+%center {
+  display: block;
+  margin: 0 auto;
+}
+
+@for $i from 1 through 3 {
+  li:nth-child(#{$i}) {
+    padding: 5px;
+  }
+}
+
+@each $number in variables.$numbers {
+  .obj-#{$number} {
+    font-size: 20px;
+  }
+}
+
+body {
+  font: 100% variables.$font-stack;
+  color: variables.$primary-color;
+}
+
+h1 {
+  padding: 5rem;
+  text-align: center;
+
+  @include media-queries.tablet {
+    padding: 2rem;
+  }
+
+  @include media-queries.desktop {
+    padding: 3rem;
+  }
+}
+
+#container {
+  @include templates.containerFlex(column);
+
+  background: lightblue;
+  color: variables.$primary-color;
+}
+
+.paragraph {
+  width: max-content;
+  @extend %center;
+  @include templates.color(red);
+}
+
+button {
+  background: variables.$primary-button;
+  margin: 10px 0;
+  &:hover {
+    background: variables.$secondary-hover;
+    &::after {
+      content: ' Formulário';
+    }
+  }
+}

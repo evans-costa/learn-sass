@@ -1,0 +1,17 @@
+@mixin color($color) {
+  @if $color == dark {
+    color: #000;
+  } @else if ($color == blue) {
+    color: blue;
+  } @else {
+    color: red;
+  }
+}
+
+@mixin containerFlex($direction) {
+  height: 300px;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
